@@ -1,9 +1,17 @@
 function ListHeader({listName}) {
-    return (
-      <div className="list-header">
-        <h1>{listName}</h1>
+  const signout = () => {
+    console.log("sign out");
+  }
+
+  return (
+    <div className="list-header">
+      <h1>{listName}</h1>
+      <div className="button-container">
+        <button className="create">ADD NEW</button>
+        <button className="signout" onclick={signout}>SIGN OUT</button>
       </div>
-    );
+    </div>
+  );
   }
   
   export default ListHeader;
