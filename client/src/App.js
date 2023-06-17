@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 
 function App() {
   const getData = async () => {
-    const response = await fetch('http://localhost:8000/todos');
+    const userEmail = 'debanjanasarkar02@gmail.com';
+    const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
     const data = await response.json();
     console.log(data);
   };
