@@ -24,7 +24,7 @@ body {
     border-bottom: rgba(0, 0, 0, 0.5) 1px solid;
 }
 
-.button-container {
+.button-container, .info-container {
     display: flex;
     align-items: center;
 }
@@ -35,4 +35,14 @@ body {
     border-radius: 12px;
     background-color: transparent;
     font-size: 10px;
+}
+
+/*List Item */
+.list-items {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 0 0 1px;
 }

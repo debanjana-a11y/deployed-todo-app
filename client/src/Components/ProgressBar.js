@@ -1,6 +1,6 @@
 function ProgressBar() {
     return (
-      <div>Debanjana
+      <div>
       </div>
     );
   }

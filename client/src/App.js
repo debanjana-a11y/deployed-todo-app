@@ -1,13 +1,16 @@
 import ListHeader from "./Components/ListHeader";
-import { useEffect } from 'react';
+import ListItems from "./Components/ListItems";
+import { useEffect, useState} from 'react';
 
 function App() {
+  const userEmail = 'debanjanasarkar02@gmail.com';
+  const [tasks, setTasks] = useState(null);
+
   const getData = async () => {
-    const userEmail = 'debanjanasarkar02@gmail.com';
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
-      const data = await response.json();
-      console.log(data);
+      const todos = await response.json();
+      setTasks(todos)
     } catch (err) {
         console.log(err);
     }
@@ -15,9 +18,15 @@ function App() {
 
   useEffect(() => getData, []);
 
+  const sortedTasks = tasks?.sort((a,b) => new Date(a.date) - new Date(b.date));
+
+  console.log(sortedTasks);
+
   return (
     <div className="app">
-      <ListHeader listName={ '📖 Start a book' }/>
+      <ListHeader listName={ '🌴 Holiday Tick List' }/>
+      {sortedTasks?.map((task) => <ListItems task={task}/>)}
+      {sortedTasks?.map((task) => <ListItems task={task}/>)}
     </div>
   );
 }

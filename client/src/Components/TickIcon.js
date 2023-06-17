@@ -1,6 +1,6 @@
 function TickIcon() {
     return (
-      <div>Debanjana
+      <div>
       </div>
     );
   }
