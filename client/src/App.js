@@ -20,13 +20,12 @@ function App() {
 
   const sortedTasks = tasks?.sort((a,b) => new Date(a.date) - new Date(b.date));
 
-  console.log(sortedTasks);
+  // console.log(sortedTasks);
 
   return (
     <div className="app">
       <ListHeader listName={ '🌴 Holiday Tick List' }/>
-      {sortedTasks?.map((task) => <ListItems task={task}/>)}
-      {sortedTasks?.map((task) => <ListItems task={task}/>)}
+      {sortedTasks?.map((task) => <ListItems key={task.id} task={task}/>)}
     </div>
   );
 }

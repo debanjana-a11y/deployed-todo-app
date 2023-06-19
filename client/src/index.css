@@ -30,11 +30,15 @@ body {
 }
 
 .button-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 5px;
-    padding: 5px 10px;
+    padding: 10px;
     border-radius: 12px;
     background-color: transparent;
     font-size: 10px;
+    cursor: pointer;
 }
 
 /*List Item */
@@ -46,3 +50,73 @@ body {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.08) 0 0 0 1px;
 }
+
+.tickIcon {
+    padding: 10px;
+}
+
+.tickIcon path{
+    fill:none;
+    stroke:#000;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:32px
+}
+
+/* button */
+.create {
+    border: 1.5px solid rgb(108, 115, 148);
+    color: rgb(108, 115, 148);
+    text-transform: uppercase;
+}
+
+.create:hover {
+    background-color: rgb(131, 138, 172);
+}
+
+.create:active {
+    background-color: rgb(108, 115, 148);
+    color: rgb(255, 255, 255);
+}
+
+.edit {
+    border: 1.5px solid rgb(141, 181, 145);
+    color: rgb(141, 181, 145);
+    text-transform: uppercase;
+}
+
+.edit:hover{
+    background-color: rgb(182, 223, 186);
+}
+
+.edit:active {
+    background-color: rgb(141, 181, 145);
+    color: rgb(255, 255, 255);
+ }
+
+ .delete {
+    border: 1.5px solid rgb(166, 71, 60);
+    color:  rgb(166, 71, 60);
+    text-transform: uppercase;
+ }
+ 
+ .delete:hover{
+     background-color: rgb(232, 189, 185);
+ }
+ 
+ .delete:active {
+    background-color: rgb(166, 71, 60);
+    color: rgb(255, 255, 255);
+  }
+  
+ .signout {
+    border: 1.5px solid rgb(241, 178, 168);
+    background-color: rgb(241, 178, 168) !important;
+    color: rgb(234, 222, 222);
+ }
+
+ .signout:hover {
+    border: 1.5px solid rgb(185, 54, 34);
+    background-color: rgb(185, 54, 34) !important;
+    color: rgb(255, 255, 255);
+ }
