@@ -19,7 +19,7 @@ function ListItems({task}) {
           <button className="edit" onClick={()=> setShowModal(true)}>EDIT</button>
           <button className="delete">DELETE</button>
         </div>
-        {showModal && <Modal mode={'edit'} setShowModal={setShowModal}/>}
+        {showModal && <Modal mode={'edit'} setShowModal={setShowModal} task={task}/>}
       </li>
     );
   }

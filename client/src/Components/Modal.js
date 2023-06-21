@@ -1,12 +1,13 @@
 import {useState} from 'react';
 
-function Modal({mode, setShowModal}) {
+function Modal({mode, setShowModal, task}) {
+  const isEditMode = mode==='edit'? true: false;
     const [data, setData] = useState(
       {
-        user_email: "",
-        title: "",
-        progress: "",
-        date: mode==='edit'? "" : new Date()
+        user_email: isEditMode? task.user_email : "",
+        title: isEditMode? task.title: "",
+        progress: isEditMode? task.progress: 40,
+        date: isEditMode? task.date : new Date()
       }
     );
 
@@ -31,7 +32,7 @@ function Modal({mode, setShowModal}) {
             <input
               required
               name="title"
-              values={data.title}
+              value={data.title}
               placeholder={"Your Task goes here"}
               maxLength={30}
               onChange={handleChange}
@@ -42,7 +43,7 @@ function Modal({mode, setShowModal}) {
               name="progress"
               id="range"
               type="range"
-              values={data.progress}
+              value={data.progress}
               min="0"
               max="100"
               onChange={handleChange}
