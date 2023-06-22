@@ -20,6 +20,33 @@ function Modal({mode, setShowModal, task}) {
       });
     };
 
+    const sendData = async (e) => {
+      e.preventDefault();
+      try {
+        let option = {};
+        if (isEditMode) {
+          /* Edit Todo */
+          option = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+          }
+        } else {
+          /* Create new Todo */
+          option = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+          }
+        }
+        const response = await fetch('http://localhost:8000/todos', option);
+        const todos = await response.json();
+        console.log("### Response received " + todos);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     return (
       <div className="overlay">
         <div className ="modal">
@@ -48,7 +75,7 @@ function Modal({mode, setShowModal, task}) {
               max="100"
               onChange={handleChange}
             />
-            <input type="submit" className={mode}/>
+            <input type="submit" className={mode} onClick={sendData}/>
           </form>
         </div>
       </div>
