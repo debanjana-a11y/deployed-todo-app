@@ -1,10 +1,10 @@
 import {useState} from 'react';
 
-function Modal({mode, setShowModal, task}) {
+function Modal({mode, setShowModal, getData, task}) {
   const isEditMode = mode==='edit'? true: false;
     const [data, setData] = useState(
       {
-        user_email: isEditMode? task.user_email : "",
+        user_email: isEditMode? task.user_email : 'debanjanasarkar02@gmail.com',
         title: isEditMode? task.title: "",
         progress: isEditMode? task.progress: 40,
         date: isEditMode? task.date : new Date()
@@ -22,6 +22,7 @@ function Modal({mode, setShowModal, task}) {
 
     const sendData = async (e) => {
       e.preventDefault();
+      let url = "";
       try {
         let option = {};
         if (isEditMode) {
@@ -31,6 +32,7 @@ function Modal({mode, setShowModal, task}) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
           }
+          url = `http://localhost:8000/todos/${task.id}`;
         } else {
           /* Create new Todo */
           option = {
@@ -38,10 +40,13 @@ function Modal({mode, setShowModal, task}) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
           }
+          url = 'http://localhost:8000/todos';
         }
-        const response = await fetch('http://localhost:8000/todos', option);
-        const todos = await response.json();
-        console.log("### Response received " + todos);
+        const response = await fetch(url, option);
+        if (response.status === 200) {
+          setShowModal(false);
+          getData();
+        }
       } catch (error) {
         console.log(error);
       }

@@ -24,8 +24,8 @@ function App() {
 
   return (
     <div className="app">
-      <ListHeader listName={ '🌴 Holiday Tick List' }/>
-      {sortedTasks?.map((task) => <ListItems key={task.id} task={task}/>)}
+      <ListHeader listName={ '🌴 Holiday Tick List'} getData={getData}/>
+      {sortedTasks?.map((task) => <ListItems key={task.id} task={task} getData={getData}/>)}
     </div>
   );
 }
