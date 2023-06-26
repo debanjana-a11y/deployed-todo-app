@@ -21,7 +21,6 @@ app.get('/todos/:userEmail', async (req, res) => {
 
 app.post('/todos/', async (req, res) => {
     const {user_email, title, progress, date} = req.body;
-    console.log(`Post API is received for ${user_email}, ${title}, ${progress}, ${date}`);
     const id = uuid.v4();
     try {
         const newTodo = await pool.query(`INSERT INTO todos(id, user_email, title, progress, date) VALUES($1, $2, $3, $4, $5)`,[id, user_email, title, progress, date]);
@@ -34,7 +33,6 @@ app.post('/todos/', async (req, res) => {
 app.put('/todos/:id', async (req, res) => {
     const { id } = req.params;
     const {user_email, title, progress, date} = req.body;
-    console.log(`PUT API is received for ${id} ${user_email}, ${title}, ${progress}, ${date}`);
     try {
         const editTodo = await pool.query(`UPDATE todos SET user_email=$2, title=$3, progress=$4, date=$5 WHERE id=$1;`,[id, user_email, title, progress, date]);
         res.json(editTodo);

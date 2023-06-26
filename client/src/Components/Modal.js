@@ -85,6 +85,6 @@ function Modal({mode, setShowModal, getData, task}) {
         </div>
       </div>
     );
-  }
+}
   
   export default Modal;
